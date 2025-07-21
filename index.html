@@ -178,20 +178,19 @@
         </div>
         
         <div class="list-container" id="listContainer">
-            <!-- Список будет сгенерирован JavaScript -->
+
         </div>
         
         <div class="footer">
             <p>Document partially declassified under the Freedom of Information Act</p>
             <p>© 2025 Department of Justice | Confidential</p>
             <p style="margin-top: 10px; font-size: 10px;">
-                *This website is created for entertainment purposes only
             </p>
         </div>
     </div>
 
     <script>
-        // Генерируем список из 234 элементов
+
         const listContainer = document.getElementById('listContainer');
         
         for (let i = 1; i <= 234; i++) {
@@ -206,16 +205,14 @@
             listContainer.appendChild(listItem);
         }
         
-        // Добавляем случайные эффекты мерцания
+
         const redactedElements = document.querySelectorAll('.redacted');
         redactedElements.forEach((element, index) => {
-            // Случайная задержка анимации
+
             element.style.animationDelay = `${Math.random() * 3}s`;
             
-            // Случайная длительность анимации
             element.style.animationDuration = `${2 + Math.random() * 4}s`;
             
-            // Некоторые элементы делаем немного прозрачнее для реализма
             if (Math.random() > 0.8) {
                 element.style.opacity = '0.8';
             }
