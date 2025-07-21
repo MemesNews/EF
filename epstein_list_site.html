@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Epstein file</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: #f5f5dc;
+            font-family: 'Courier New', monospace;
+            padding: 20px;
+            background-image: 
+                linear-gradient(rgba(0,0,0,0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,0,0,0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            border: 2px solid #333;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #000;
+            padding-bottom: 20px;
+        }
+        
+        .title {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .classified {
+            background: red;
+            color: white;
+            padding: 5px 15px;
+            font-weight: bold;
+            margin: 10px 0;
+            display: inline-block;
+            transform: rotate(-2deg);
+        }
+        
+        .watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            font-size: 80px;
+            color: rgba(255, 0, 0, 0.1);
+            font-weight: bold;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .list-container {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .list-item {
+            display: flex;
+            align-items: center;
+            margin: 8px 0;
+            padding: 5px;
+            border-left: 3px solid #333;
+            padding-left: 15px;
+        }
+        
+        .number {
+            font-weight: bold;
+            margin-right: 15px;
+            width: 40px;
+            text-align: right;
+        }
+        
+        .redacted {
+            background: #000;
+            height: 20px;
+            flex-grow: 1;
+            margin-right: 20px;
+            position: relative;
+            animation: flicker 3s infinite;
+        }
+        
+        .redacted:nth-child(odd) {
+            animation-delay: 0.5s;
+        }
+        
+        .redacted:nth-child(even) {
+            animation-delay: 1s;
+        }
+        
+        @keyframes flicker {
+            0%, 98% { opacity: 1; }
+            99%, 100% { opacity: 0.7; }
+        }
+        
+        .footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+            font-style: italic;
+            border-top: 1px solid #ccc;
+            padding-top: 20px;
+        }
+        
+        .warning {
+            background: yellow;
+            color: black;
+            padding: 10px;
+            margin: 20px 0;
+            border: 2px solid #000;
+            font-weight: bold;
+            text-align: center;
+        }
+        
+        .intro-text {
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin: 20px 0;
+            font-size: 14px;
+            line-height: 1.6;
+            border-left: 4px solid #333;
+        }
+        
+        .intro-text strong {
+            color: #333;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="watermark">TOP SECRET</div>
+    
+    <div class="container">
+        <div class="header">
+            <div class="classified">CLASSIFIED</div>
+            <h1 class="title">The Epstein List</h1>
+            <div class="classified">FOR INTERNAL USE ONLY</div>
+        </div>
+        
+        <div class="warning">
+            ⚠️ WARNING: This document contains classified information and is not subject to disclosure ⚠️
+        </div>
+        
+        <div class="intro-text">
+            <p><strong>CONFIDENTIAL MEMORANDUM</strong></p>
+            <p>TO: Authorized Personnel Only</p>
+            <p>FROM: Department of Justice - Special Investigation Unit</p>
+            <p>RE: Case File #2024-EPS-001</p>
+            <br>
+            <p>This document contains sensitive information obtained through ongoing federal investigation. 
+            Distribution is strictly limited to authorized personnel with appropriate security clearance. 
+            Any unauthorized disclosure, reproduction, or distribution of this material is strictly prohibited 
+            and may result in severe criminal penalties under federal law.</p>
+            <br>
+            <p>The following list contains names and details of individuals associated with the investigation. 
+            Information has been redacted in accordance with national security protocols and ongoing 
+            legal proceedings.</p>
+            <br>
+        </div>
+        
+        <div class="list-container" id="listContainer">
+            <!-- Список будет сгенерирован JavaScript -->
+        </div>
+        
+        <div class="footer">
+            <p>Document partially declassified under the Freedom of Information Act</p>
+            <p>© 2025 Department of Justice | Confidential</p>
+            <p style="margin-top: 10px; font-size: 10px;">
+                *This website is created for entertainment purposes only
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Генерируем список из 234 элементов
+        const listContainer = document.getElementById('listContainer');
+        
+        for (let i = 1; i <= 234; i++) {
+            const listItem = document.createElement('div');
+            listItem.className = 'list-item';
+            
+            listItem.innerHTML = `
+                <span class="number">${i}.</span>
+                <div class="redacted"></div>
+            `;
+            
+            listContainer.appendChild(listItem);
+        }
+        
+        // Добавляем случайные эффекты мерцания
+        const redactedElements = document.querySelectorAll('.redacted');
+        redactedElements.forEach((element, index) => {
+            // Случайная задержка анимации
+            element.style.animationDelay = `${Math.random() * 3}s`;
+            
+            // Случайная длительность анимации
+            element.style.animationDuration = `${2 + Math.random() * 4}s`;
+            
+            // Некоторые элементы делаем немного прозрачнее для реализма
+            if (Math.random() > 0.8) {
+                element.style.opacity = '0.8';
+            }
+        });
+    </script>
+</body>
+</html>
